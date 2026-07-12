@@ -2,7 +2,7 @@
   "title": "電路好好玩",
   "projectName": "electric-circuit-lab",
   "repositoryName": "electric-circuit-lab",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "language": "zh-TW",
   "level": "國小",
   "grade": "五年級",
@@ -15,4 +15,3 @@
   "teacherGuide": true,
   "githubPages": "尚未部署"
 }
-
