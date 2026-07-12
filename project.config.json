@@ -13,5 +13,6 @@
   "audio": false,
   "progressTracking": true,
   "teacherGuide": true,
-  "githubPages": "尚未部署"
+  "repositoryUrl": "https://github.com/prayer168/circuit",
+  "githubPages": "https://prayer168.github.io/circuit/"
 }

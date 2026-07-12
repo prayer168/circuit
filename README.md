@@ -70,7 +70,9 @@ HTML5、CSS3、SVG、原生 JavaScript、JSON、Vite。
 
 ## GitHub Pages
 
-尚未部署；專案已使用相對路徑與 Vite `base: './'`，可供子路徑發布。
+- 教材網站：https://prayer168.github.io/circuit/
+- GitHub repository：https://github.com/prayer168/circuit
+- 發布來源：`main` 分支根目錄
 
 ## 版本
 
@@ -79,4 +81,3 @@ HTML5、CSS3、SVG、原生 JavaScript、JSON、Vite。
 ## 授權與引用
 
 程式碼採 MIT License。外部自主學習資源僅提供連結與摘要，各資源著作權及授權依原網站標示；查核紀錄見 [references.md](./docs/references.md)。
-
