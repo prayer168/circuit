@@ -1,0 +1,11 @@
+{
+  "applications": [
+    {"title":"手電筒","description":"按下開關後形成通路，電池讓燈泡發光。","principle":"開關控制通路與斷路","question":"如果電池裝反或接點生鏽，燈泡可能怎樣？","visual":"flashlight"},
+    {"title":"家中的燈","description":"各房間的燈大多採並聯，才能分別開關。","principle":"並聯支路互不影響","question":"客廳燈關掉時，臥室燈為什麼仍能亮？","visual":"home"},
+    {"title":"傳統燈串","description":"某些燈串一顆故障就全暗，呈現串聯只有一條路的特性。","principle":"串聯任一處斷路會全停","question":"怎麼從故障現象推測它可能是串聯？","visual":"string"},
+    {"title":"延長線","description":"插孔彼此並聯，但總用電量仍有限制，不能超載。","principle":"並聯與安全負載","question":"為什麼不能把太多高功率電器接在同一條延長線？","visual":"powerstrip"},
+    {"title":"保險絲與斷路器","description":"電流過大時會切斷電路，降低電線過熱的危險。","principle":"安全裝置主動斷路","question":"斷路器跳脫後，應先做什麼而不是一直重開？","visual":"breaker"},
+    {"title":"安全用電","description":"插座電壓遠高於乾電池，不能用手、金屬或濕物碰觸。","principle":"人體也可能成為電流路徑","question":"手濕時為什麼不該操作插頭和電器？","visual":"safety"}
+  ]
+}
+
