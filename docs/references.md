@@ -10,6 +10,12 @@
   - https://market.cloud.edu.tw/resources/video/1832477
 - PhET〈電路組裝套件：直流電〉：作為延伸互動模擬，提供電池、燈泡、開關及量測工具。
   - https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_zh_TW.html
+- 桃園市南崁國小〈電路連接高手〉：以兩頁圖解分別比較燈泡串並聯與電池串並聯的接法、亮度和故障效果。
+  - https://x.nlps.tyc.edu.tw/stud/data/20297/00/20220527_%E9%9B%BB%E8%B7%AF%E9%80%A3%E6%8E%A5%E9%AB%98%E6%89%8B.pdf
+- 宜蘭縣員山國小〈電池、燈泡的串聯、並聯〉：確認燈泡同路／分路，以及電池正接負、正接正與負接負的辨認方式。
+  - https://www.yeses.ilc.edu.tw/2023/06/03/%E9%9B%BB%E6%B1%A0%E3%80%81%E7%87%88%E6%B3%A1%E7%9A%84%E4%B8%B2%E8%81%AF%E3%80%81%E4%B8%A6%E8%81%AF%E3%80%90%E9%87%8D%E9%BB%9E%E6%95%B4%E7%90%86%E3%80%91/
+- 教育大市集〈四年級自然 2-2 電池的串聯和並聯〉：確認學習內容 `INe-Ⅱ-9` 涵蓋電池與燈泡的串聯、並聯及不同效果。
+  - https://market.cloud.edu.tw/resources/web/1845160
 
 ## 授權說明
 
@@ -17,5 +23,4 @@
 
 ## 課綱說明
 
-核心概念經教育大市集公開教材交叉確認。為避免版本或學習階段誤用，正式課綱代碼仍標示「待教師依正式課綱手冊確認」。
-
+核心概念與學習內容代碼經教育大市集公開教材及國小教學資源交叉確認，採用 `INe-Ⅱ-9`。
