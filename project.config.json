@@ -1,0 +1,18 @@
+{
+  "title": "電路好好玩",
+  "projectName": "electric-circuit-lab",
+  "repositoryName": "electric-circuit-lab",
+  "version": "0.1.0",
+  "language": "zh-TW",
+  "level": "國小",
+  "grade": "五年級",
+  "subject": "自然科學",
+  "duration": "40 分鐘",
+  "mode": "引導模式",
+  "style": "清爽、自然、教學寫實",
+  "audio": false,
+  "progressTracking": true,
+  "teacherGuide": true,
+  "githubPages": "尚未部署"
+}
+
