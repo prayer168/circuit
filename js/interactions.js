@@ -23,8 +23,12 @@ export function initConnectionComparison() {
   const title = document.querySelector('#modeTitle');
   const badge = document.querySelector('#modeBadge');
   const steps = document.querySelector('#modeSteps');
+  const animationStatus = document.querySelector('#animationStatus');
   const remove = document.querySelector('#removeComponent');
   const batterySafety = document.querySelector('#batterySafety');
+  const playButton = document.querySelector('#playAnimation');
+  const pauseButton = document.querySelector('#pauseAnimation');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const modes = {
     'bulb-series': {
       diagram: 'bulbSeriesDiagram', badge: '燈泡串聯', title: '兩顆燈泡共用一條通路', component: '燈泡',
@@ -61,10 +65,32 @@ export function initConnectionComparison() {
   let playing = false;
   let slow = false;
   let stepTimer;
-  const updateStep = () => [...steps.children].forEach((item, i) => item.classList.toggle('active', i === stepIndex));
+  const updateStep = () => {
+    [...steps.children].forEach((item, i) => {
+      const active = i === stepIndex;
+      item.classList.toggle('active', active);
+      item.toggleAttribute('aria-current', active);
+    });
+    animationStatus.textContent = `步驟 ${stepIndex + 1}／${steps.children.length}：${steps.children[stepIndex]?.textContent || ''}`;
+  };
   const stopTimer = () => { clearInterval(stepTimer); stepTimer = undefined; };
+  const setPlaying = value => {
+    playing = value;
+    stage.classList.toggle('paused', !value);
+    playButton.setAttribute('aria-pressed', String(value));
+    pauseButton.setAttribute('aria-pressed', String(!value));
+  };
+  const pause = () => { stopTimer(); setPlaying(false); };
   const startTimer = () => {
-    stopTimer(); playing = true; stage.classList.remove('paused');
+    stopTimer();
+    if (reducedMotion.matches) {
+      stepIndex = steps.children.length - 1;
+      updateStep();
+      pause();
+      animationStatus.textContent += '（已依降低動畫偏好顯示完成狀態）';
+      return;
+    }
+    setPlaying(true);
     stepTimer = setInterval(() => { stepIndex = (stepIndex + 1) % 4; updateStep(); }, slow ? 1800 : 900);
   };
   const render = () => {
@@ -72,12 +98,16 @@ export function initConnectionComparison() {
     stage.dataset.mode = mode;
     stage.classList.toggle('broken', broken);
     diagrams.forEach(diagram => diagram.toggleAttribute('hidden', diagram.id !== config.diagram));
-    document.querySelectorAll('.mode-button').forEach(btn => btn.classList.toggle('selected', btn.dataset.mode === mode));
+    document.querySelectorAll('.mode-button').forEach(btn => {
+      const selected = btn.dataset.mode === mode;
+      btn.classList.toggle('selected', selected);
+      btn.setAttribute('aria-pressed', String(selected));
+    });
     badge.textContent = config.badge;
     title.textContent = config.title;
     diagramTitle.textContent = config.svgTitle;
     diagramDesc.textContent = config.desc;
-    steps.innerHTML = config.steps.map((step, index) => `<li${index === 0 ? ' class="active"' : ''}>${step}</li>`).join('');
+    steps.innerHTML = config.steps.map((step, index) => `<li${index === 0 ? ' class="active" aria-current="step"' : ''}>${step}</li>`).join('');
     stepIndex = 0; updateStep();
     remove.textContent = broken ? `第 2 顆${config.component}已拿掉` : `拿掉第 2 顆${config.component}`;
     remove.disabled = broken;
@@ -85,13 +115,14 @@ export function initConnectionComparison() {
     if (!broken) feedback.textContent = config.feedback;
     else feedback.innerHTML = config.broken;
   };
-  document.querySelectorAll('.mode-button').forEach(btn => btn.addEventListener('click', () => { mode = btn.dataset.mode; broken = false; render(); }));
+  document.querySelectorAll('.mode-button').forEach(btn => btn.addEventListener('click', () => { pause(); mode = btn.dataset.mode; broken = false; render(); }));
   remove.addEventListener('click', () => { broken = true; render(); });
-  document.querySelector('#playAnimation').addEventListener('click', startTimer);
-  document.querySelector('#pauseAnimation').addEventListener('click', () => { playing = false; stopTimer(); stage.classList.add('paused'); });
+  playButton.addEventListener('click', startTimer);
+  pauseButton.addEventListener('click', pause);
   document.querySelector('#slowAnimation').addEventListener('click', event => { slow = !slow; event.currentTarget.setAttribute('aria-pressed', slow); event.currentTarget.textContent = slow ? '1× 正常' : '½ 慢速'; stage.classList.toggle('slow', slow); if (playing) startTimer(); });
   document.querySelector('#replayAnimation').addEventListener('click', () => { stepIndex = 0; updateStep(); startTimer(); });
-  document.querySelector('#resetConnection').addEventListener('click', () => { broken = false; stepIndex = 0; playing = false; stopTimer(); stage.classList.add('paused'); render(); });
+  document.querySelector('#resetConnection').addEventListener('click', () => { broken = false; stepIndex = 0; pause(); render(); });
+  document.addEventListener('lesson:tabchange', event => { if (event.detail.id !== 'connections') pause(); });
   render();
 }
 
@@ -104,6 +135,10 @@ export function initLab() {
     const mode = modeInput.value;
     const fault = faultInput.checked;
     const prediction = document.querySelector('input[name="prediction"]:checked')?.value;
+    if (!prediction) {
+      feedback.innerHTML = '<strong>請先預測：</strong>選一個你認為會出現的結果，再進行驗證。';
+      return;
+    }
     circuit.className = `house-circuit ${mode}${fault ? ' fault' : ''}`;
     const actual = fault ? (mode === 'series' ? 'both-off' : 'one-on') : 'both-on';
     circuit.setAttribute('aria-label', fault ? (mode === 'series' ? '第 2 顆燈泡故障，串聯的兩顆燈泡都不亮' : '第 2 顆燈泡故障，並聯的第 1 顆仍亮') : `兩顆燈泡${mode === 'series' ? '串聯' : '並聯'}且正常發亮`);
@@ -114,22 +149,33 @@ export function initLab() {
     modeInput.value = 'series'; faultInput.checked = false;
     document.querySelectorAll('input[name="prediction"]').forEach(input => input.checked = false);
     circuit.className = 'house-circuit series';
+    circuit.setAttribute('aria-label', '兩顆燈泡串聯且正常發亮');
     feedback.innerHTML = '<strong>操作提示：</strong>選擇接法、預測結果，再按「驗證結果」。';
   });
 }
 
-const sceneSvg = type => {
+const sceneSvg = (type, label) => {
   const scenes = {
-    flashlight:'<path d="M55 72h92l42 24-42 24H55z" class="scene-safe"/><path d="M188 84l70-28v80l-70-28z" fill="#fff3c4"/><circle cx="82" cy="96" r="15" class="scene-accent pulse"/>',
-    home:'<path d="M58 103l72-55 72 55v70H58z" class="scene-safe"/><rect x="84" y="116" width="35" height="57" fill="#fff"/><rect x="143" y="116" width="35" height="30" class="scene-accent pulse"/><path d="M130 48v-22" class="scene-line"/>',
-    string:'<path d="M35 55q95 75 215 0" class="scene-line"/><circle cx="67" cy="81" r="16" class="scene-accent pulse"/><circle cx="120" cy="101" r="16" class="scene-accent pulse"/><circle cx="175" cy="97" r="16" class="scene-danger"/><circle cx="225" cy="76" r="16" class="scene-accent pulse"/>',
-    powerstrip:'<rect x="38" y="62" width="210" height="86" rx="26" class="scene-safe"/><circle cx="86" cy="105" r="20" fill="#fff"/><circle cx="145" cy="105" r="20" fill="#fff"/><circle cx="204" cy="105" r="20" fill="#fff"/><path d="M248 105h30" class="scene-line"/>',
-    breaker:'<rect x="77" y="35" width="130" height="135" rx="18" fill="#fff" stroke="#143d59" stroke-width="7"/><rect x="115" y="58" width="55" height="78" rx="12" class="scene-danger move"/><path d="M142 137v25" class="scene-line"/>',
-    safety:'<path d="M120 30l100 165H20z" fill="#fff3c4" stroke="#143d59" stroke-width="7"/><path d="M128 65l-30 65h32l-16 42 54-72h-33l18-35z" class="scene-danger"/><path d="M233 56q25 23 0 46q-25-23 0-46z" fill="#4aa8d8"/>'
+    flashlight:'<path d="M55 72h92l42 24-42 24H55z" class="scene-safe"/><path d="M188 84l70-28v80l-70-28z" fill="#fff3c4" class="scene-evidence"/><circle cx="82" cy="96" r="15" class="scene-accent"/>',
+    home:'<path d="M58 103l72-55 72 55v70H58z" class="scene-safe"/><rect x="84" y="116" width="35" height="57" fill="#fff"/><rect x="143" y="116" width="35" height="30" class="scene-accent scene-evidence"/><path d="M130 48v-22" class="scene-line"/>',
+    string:'<path d="M35 55q95 75 215 0" class="scene-line"/><circle cx="67" cy="81" r="16" class="scene-accent"/><circle cx="120" cy="101" r="16" class="scene-accent"/><circle cx="175" cy="97" r="16" class="scene-accent"/><circle cx="225" cy="76" r="16" class="scene-accent"/><path d="M160 82l30 30m0-30-30 30" class="scene-line scene-evidence" stroke="#ef6f61"/>',
+    powerstrip:'<rect x="38" y="62" width="210" height="86" rx="26" class="scene-safe"/><circle cx="86" cy="105" r="20" fill="#fff"/><circle cx="145" cy="105" r="20" fill="#fff"/><circle cx="204" cy="105" r="20" fill="#fff"/><path d="M248 105h30" class="scene-line"/><path d="M126 41h72" stroke="#ef6f61" stroke-width="12" stroke-linecap="round" class="scene-evidence"/>',
+    breaker:'<rect x="77" y="35" width="130" height="135" rx="18" fill="#fff" stroke="#143d59" stroke-width="7"/><rect x="115" y="58" width="55" height="78" rx="12" class="scene-safe"/><path d="M142 137v25" class="scene-line"/><path d="M104 146l76-88" stroke="#ef6f61" stroke-width="11" stroke-linecap="round" class="scene-evidence"/>',
+    safety:'<path d="M120 30l100 165H20z" fill="#fff3c4" stroke="#143d59" stroke-width="7"/><path d="M128 65l-30 65h32l-16 42 54-72h-33l18-35z" class="scene-danger"/><path d="M233 56q25 23 0 46q-25-23 0-46z" fill="#4aa8d8" class="scene-evidence"/>'
   };
-  return `<svg class="app-visual" viewBox="0 0 280 200" role="img" aria-label="${type} 生活情境圖解">${scenes[type]}</svg>`;
+  return `<svg class="app-visual" viewBox="0 0 280 200" role="img" aria-label="${label}">${scenes[type]}</svg>`;
 };
 
 export function renderApplications(items) {
-  document.querySelector('#applicationGrid').innerHTML = items.map(item => `<article class="application-card">${sceneSvg(item.visual)}<div class="content"><span class="principle-chip">${item.principle}</span><h2>${item.title}</h2><p>${item.description}</p><p class="think"><strong>想一想：</strong>${item.question}</p></div></article>`).join('');
+  const grid = document.querySelector('#applicationGrid');
+  grid.innerHTML = items.map((item, index) => `<article class="application-card" data-scene="${item.visual}">${sceneSvg(item.visual, item.alt)}<div class="content"><span class="principle-chip">${item.principle}</span><h2>${item.title}</h2><p>${item.description}</p><p class="think"><strong>先想一想：</strong>${item.question}</p><button class="application-toggle" type="button" aria-expanded="false" aria-controls="applicationAnswer${index}">顯示觀察證據</button><p id="applicationAnswer${index}" class="application-answer" hidden aria-live="polite"><strong>證據：</strong>${item.answer}</p></div></article>`).join('');
+  grid.querySelectorAll('.application-toggle').forEach(button => button.addEventListener('click', () => {
+    const card = button.closest('.application-card');
+    const answer = document.querySelector(`#${button.getAttribute('aria-controls')}`);
+    const revealed = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(revealed));
+    button.textContent = revealed ? '隱藏觀察證據' : '顯示觀察證據';
+    card.classList.toggle('revealed', revealed);
+    answer.hidden = !revealed;
+  }));
 }

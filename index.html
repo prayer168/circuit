@@ -3,8 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="國小五年級互動教材：認識通路、串聯與並聯，以及生活中的安全用電。">
+  <meta name="description" content="國小四年級互動教材：認識通路、串聯與並聯，以及生活中的安全用電。">
+  <meta name="theme-color" content="#143d59">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="電路好好玩">
+  <meta property="og:title" content="電路好好玩｜互動自然教材">
+  <meta property="og:description" content="操作開關、比較四種串並聯、預測故障結果，學會用電路證據安全解題。">
+  <meta property="og:url" content="https://prayer168.github.io/circuit/">
+  <meta property="og:image" content="https://prayer168.github.io/circuit/img/og/circuit.png">
+  <meta property="og:image:secure_url" content="https://prayer168.github.io/circuit/img/og/circuit.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="電路好好玩社群預覽圖，呈現電池、燈泡與互動學習任務。">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="電路好好玩｜互動自然教材">
+  <meta name="twitter:description" content="操作開關、比較四種串並聯、預測故障結果，學會用電路證據安全解題。">
+  <meta name="twitter:image" content="https://prayer168.github.io/circuit/img/og/circuit.png">
   <title>電路好好玩｜互動自然教材</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23fff3c4'/%3E%3Cpath d='M24 39h16v8H24z' fill='%23143d59'/%3E%3Cpath d='M21 27a11 11 0 1 1 22 0c0 5-3 7-6 10H27c-3-3-6-5-6-10Z' fill='%23ffc94a' stroke='%23143d59' stroke-width='4'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/animation.css">
   <link rel="stylesheet" href="./css/responsive.css">
@@ -14,7 +32,7 @@
   <header class="app-header">
     <div class="brand" aria-label="電路好好玩">
       <span class="brand-icon" aria-hidden="true">💡</span>
-      <div><strong>電路好好玩</strong><small>國小五年級・自然科學・約 40 分鐘</small></div>
+      <div><strong>電路好好玩</strong><small>國小四年級・自然科學・約 40 分鐘</small></div>
     </div>
     <div class="progress-wrap">
       <span id="progressText">學習進度 0%</span>
@@ -51,12 +69,12 @@
         </div>
         <svg class="hero-circuit" viewBox="0 0 520 420" role="img" aria-labelledby="heroTitle heroDesc">
           <title id="heroTitle">燈泡與電池組成的閉合電路</title><desc id="heroDesc">黃色電流點沿著完整電線繞行，燈泡發出光芒。</desc>
-          <defs><filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+          <defs><filter id="heroGlow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
           <rect x="60" y="70" width="400" height="270" rx="48" class="circuit-board"/>
           <path d="M130 255V150H235 M315 150H390V255H325 M195 255H130" class="wire"/>
           <g class="bulb lit" transform="translate(275 150)"><circle r="43"/><path d="M-18 35h36v32h-36z"/><path d="M-15 5l15 14L15 5"/></g>
           <g class="battery" transform="translate(260 255)"><rect x="-65" y="-32" width="130" height="64" rx="14"/><path d="M-12-43v22M12-52v40"/><text x="-48" y="8">−</text><text x="38" y="8">＋</text></g>
-          <g class="current-dots"><circle cx="130" cy="220" r="7"/><circle cx="150" cy="150" r="7"/><circle cx="355" cy="150" r="7"/><circle cx="390" cy="260" r="7"/><circle cx="315" cy="255" r="7"/></g>
+          <g class="current-dots" aria-hidden="true"><circle cx="0" cy="0" r="7"/><circle cx="0" cy="0" r="7"/><circle cx="0" cy="0" r="7"/><circle cx="0" cy="0" r="7"/><circle cx="0" cy="0" r="7"/></g>
           <text x="260" y="385" text-anchor="middle">完整的路，電流才能繞一圈</text>
         </svg>
       </div>
@@ -72,7 +90,7 @@
       <div class="observe-box">
         <div><h2>點擊開關，觀察證據</h2><p>注意：開關、電流點與燈泡亮度會一起改變。</p><button id="basicSwitch" class="switch-button" type="button" aria-pressed="false">開關：斷開</button><button id="resetBasic" class="secondary-button" type="button">重設</button></div>
         <div class="basic-demo" id="basicDemo" data-on="false" role="img" aria-label="開關斷開，電路有缺口，燈泡不亮">
-          <svg viewBox="0 0 660 330" aria-hidden="true"><path d="M110 240V95H240 M310 95H470 M530 95H560V240H380 M270 240H110" class="wire"/><path d="M470 95l56-40" class="switch-arm"/><circle cx="470" cy="95" r="9" class="terminal"/><circle cx="530" cy="95" r="9" class="terminal"/><g class="bulb" transform="translate(275 95)"><circle r="38"/><path d="M-17 31h34v28h-34z"/></g><g class="battery" transform="translate(325 240)"><rect x="-55" y="-28" width="110" height="56" rx="12"/><path d="M-10-38v18M10-47v36"/></g><g class="flow-path"><circle cx="150" cy="95" r="6"/><circle cx="410" cy="95" r="6"/><circle cx="560" cy="185" r="6"/><circle cx="430" cy="240" r="6"/></g></svg>
+          <svg viewBox="0 0 660 330" aria-hidden="true"><path d="M110 240V95H240 M310 95H470 M530 95H560V240H380 M270 240H110" class="wire"/><path d="M470 95l56-40" class="switch-arm"/><circle cx="470" cy="95" r="9" class="terminal"/><circle cx="530" cy="95" r="9" class="terminal"/><g class="bulb" transform="translate(275 95)"><circle r="38"/><path d="M-17 31h34v28h-34z"/></g><g class="battery" transform="translate(325 240)"><rect x="-55" y="-28" width="110" height="56" rx="12"/><path d="M-10-38v18M10-47v36"/></g><g class="flow-path"><circle cx="0" cy="0" r="6"/><circle cx="0" cy="0" r="6"/><circle cx="0" cy="0" r="6"/><circle cx="0" cy="0" r="6"/></g></svg>
           <p id="basicFeedback" class="feedback" aria-live="polite"><strong>現在是斷路：</strong>路有缺口，電流無法繞一圈。</p>
         </div>
       </div>
@@ -80,7 +98,7 @@
 
     <section class="tab-panel" id="connections" role="tabpanel" aria-labelledby="tab-connections" hidden>
       <header class="panel-heading"><span class="eyebrow">核心概念 2</span><h1>先看元件，再看接法</h1><p>燈泡和電池都能串聯或並聯，但「怎麼接」和「造成的效果」不同。</p></header>
-      <div class="circuit-choice-grid" aria-label="四種電路接法"><section><h2>💡 燈泡的接法</h2><p>固定使用 1 顆電池，比較 2 顆燈泡。</p><div role="group" aria-label="選擇燈泡接法"><button class="mode-button selected" type="button" data-mode="bulb-series">燈泡串聯</button><button class="mode-button" type="button" data-mode="bulb-parallel">燈泡並聯</button></div></section><section><h2>🔋 電池的接法</h2><p>固定使用 1 顆燈泡，比較 2 顆電池。</p><div role="group" aria-label="選擇電池接法"><button class="mode-button" type="button" data-mode="battery-series">電池串聯</button><button class="mode-button" type="button" data-mode="battery-parallel">電池並聯</button></div></section></div>
+      <div class="circuit-choice-grid" aria-label="四種電路接法"><section><h2>💡 燈泡的接法</h2><p>固定使用 1 顆電池，比較 2 顆燈泡。</p><div role="group" aria-label="選擇燈泡接法"><button class="mode-button selected" type="button" data-mode="bulb-series" aria-pressed="true">燈泡串聯</button><button class="mode-button" type="button" data-mode="bulb-parallel" aria-pressed="false">燈泡並聯</button></div></section><section><h2>🔋 電池的接法</h2><p>固定使用 1 顆燈泡，比較 2 顆電池。</p><div role="group" aria-label="選擇電池接法"><button class="mode-button" type="button" data-mode="battery-series" aria-pressed="false">電池串聯</button><button class="mode-button" type="button" data-mode="battery-parallel" aria-pressed="false">電池並聯</button></div></section></div>
       <div class="connection-stage paused" data-mode="bulb-series">
         <svg id="connectionSvg" viewBox="0 0 820 430" role="img" aria-labelledby="connectionTitle connectionDesc"><title id="connectionTitle">燈泡串聯電路</title><desc id="connectionDesc">一顆電池和兩顆燈泡形成單一通路，兩顆燈泡依序接在同一條線路上。</desc>
           <g id="bulbSeriesDiagram" class="circuit-diagram"><path d="M120 310V110H240 M320 110H500 M580 110H700V310H465 M355 310H120" class="wire circuit-path"/><g class="bulb lit dim bulb-one" transform="translate(280 110)"><circle r="38"/><path d="M-17 31h34v28h-34z"/></g><g class="bulb lit dim bulb-two" transform="translate(540 110)"><circle r="38"/><path d="M-17 31h34v28h-34z"/></g><g class="battery" transform="translate(410 310)"><rect x="-55" y="-28" width="110" height="56" rx="12"/><path d="M-10-38v18M10-47v36"/><text x="-44" y="8">−</text><text x="34" y="8">＋</text></g><text class="diagram-label" x="410" y="390" text-anchor="middle">兩顆燈泡在同一條通路上</text></g>
@@ -88,13 +106,13 @@
           <g id="batterySeriesDiagram" class="circuit-diagram" hidden><path d="M225 310H120V100H370 M450 100H700V310H512 M357 310H380" class="wire circuit-path"/><g class="bulb lit strong" transform="translate(410 100)"><circle r="38"/><path d="M-17 31h34v28h-34z"/></g><g class="battery-cell cell-one" transform="translate(290 310)"><rect x="-65" y="-30" width="120" height="60" rx="12"/><rect x="55" y="-12" width="12" height="24" rx="3"/><text x="-48" y="8">−</text><text x="32" y="8">＋</text></g><g class="battery-cell cell-two" transform="translate(445 310)"><rect x="-65" y="-30" width="120" height="60" rx="12"/><rect x="55" y="-12" width="12" height="24" rx="3"/><text x="-48" y="8">−</text><text x="32" y="8">＋</text></g><text class="connection-label" x="368" y="265" text-anchor="middle">＋ 接 −</text><text class="diagram-label" x="410" y="405" text-anchor="middle">電池頭尾相接：第 1 顆正極接第 2 顆負極</text></g>
           <g id="batteryParallelDiagram" class="circuit-diagram" hidden><path d="M260 310V90H370 M450 90H560V310 M260 225H345 M477 225H560 M260 310H345 M477 310H560" class="wire circuit-path"/><g class="bulb lit" transform="translate(410 90)"><circle r="38"/><path d="M-17 31h34v28h-34z"/></g><g class="battery-cell cell-one" transform="translate(410 225)"><rect x="-65" y="-30" width="120" height="60" rx="12"/><rect x="55" y="-12" width="12" height="24" rx="3"/><text x="-48" y="8">−</text><text x="32" y="8">＋</text></g><g class="battery-cell cell-two" transform="translate(410 310)"><rect x="-65" y="-30" width="120" height="60" rx="12"/><rect x="55" y="-12" width="12" height="24" rx="3"/><text x="-48" y="8">−</text><text x="32" y="8">＋</text></g><circle cx="260" cy="225" r="9" class="junction"/><circle cx="560" cy="225" r="9" class="junction"/><text class="connection-label" x="235" y="270" text-anchor="end">負極接負極</text><text class="connection-label" x="585" y="270">正極接正極</text><text class="diagram-label" x="410" y="405" text-anchor="middle">兩顆同規格電池的正極相接、負極相接</text></g>
         </svg>
-        <aside class="step-panel"><span id="modeBadge" class="status-badge">燈泡串聯</span><h2 id="modeTitle">兩顆燈泡共用一條通路</h2><ol id="modeSteps"><li class="active">從電池正極出發</li><li>依序經過兩顆燈泡</li><li>沿同一條路前進</li><li>回到電池負極</li></ol><div class="animation-controls" aria-label="動畫控制"><button id="playAnimation" type="button" class="secondary-button">▶ 播放</button><button id="pauseAnimation" type="button" class="secondary-button">⏸ 暫停</button><button id="slowAnimation" type="button" class="secondary-button" aria-pressed="false">½ 慢速</button><button id="replayAnimation" type="button" class="text-button">↺ 重播</button></div><button id="removeComponent" type="button" class="secondary-button">拿掉第 2 顆燈泡</button><button id="resetConnection" type="button" class="text-button">恢復電路</button><p id="connectionFeedback" class="feedback" aria-live="polite">和一顆燈泡相比，兩顆相同燈泡串聯時通常較暗。</p><p class="safety-note" id="batterySafety" hidden><strong>實作提醒：</strong>電池並聯只能使用同品牌、同規格且新舊程度相同的電池。</p></aside>
+        <aside class="step-panel"><span id="modeBadge" class="status-badge">燈泡串聯</span><h2 id="modeTitle">兩顆燈泡共用一條通路</h2><ol id="modeSteps"><li class="active" aria-current="step">從電池正極出發</li><li>依序經過兩顆燈泡</li><li>沿同一條路前進</li><li>回到電池負極</li></ol><p id="animationStatus" class="animation-caption" aria-live="polite">步驟 1／4：從電池正極出發</p><div class="animation-controls" aria-label="動畫控制"><button id="playAnimation" type="button" class="secondary-button" aria-pressed="false">▶ 播放</button><button id="pauseAnimation" type="button" class="secondary-button" aria-pressed="true">⏸ 暫停</button><button id="slowAnimation" type="button" class="secondary-button" aria-pressed="false">½ 慢速</button><button id="replayAnimation" type="button" class="text-button">↺ 重播</button></div><button id="removeComponent" type="button" class="secondary-button">拿掉第 2 顆燈泡</button><button id="resetConnection" type="button" class="text-button">恢復電路</button><p id="connectionFeedback" class="feedback" aria-live="polite">和一顆燈泡相比，兩顆相同燈泡串聯時通常較暗。</p><p class="safety-note" id="batterySafety" hidden><strong>實作提醒：</strong>電池並聯只能使用同品牌、同規格且新舊程度相同的電池。</p></aside>
       </div>
     </section>
 
     <section class="tab-panel" id="lab" role="tabpanel" aria-labelledby="tab-lab" hidden>
       <header class="panel-heading"><span class="eyebrow">預測與驗證</span><h1>燈泡故障實驗室</h1><p>這一關只比較「燈泡串聯」與「燈泡並聯」，觀察第 2 顆燈泡故障的影響。</p></header>
-      <div class="lab-layout"><div class="control-card"><h2>實驗控制台</h2><label>燈泡接法<select id="labMode"><option value="series">燈泡串聯</option><option value="parallel">燈泡並聯</option></select></label><label class="check-row"><input id="labFault" type="checkbox"> 第 2 顆燈泡故障</label><fieldset><legend>先做預測</legend><label><input type="radio" name="prediction" value="both-off"> 兩顆都不亮</label><label><input type="radio" name="prediction" value="one-on"> 只有第 1 顆亮</label></fieldset><button id="runLab" type="button" class="primary-button">驗證結果</button><button id="resetLab" type="button" class="secondary-button">重設實驗</button></div><div class="lab-result"><div id="houseCircuit" class="house-circuit series" role="img" aria-label="兩顆燈泡串聯且正常"><span class="house-wire top"></span><span class="house-wire branch"></span><span class="lab-bulb one">💡</span><span class="lab-bulb two">💡</span><span class="lab-battery">＋ ▮ −</span></div><div id="labFeedback" class="feedback large" aria-live="polite"><strong>操作提示：</strong>選擇燈泡接法、預測結果，再按「驗證結果」。</div><div class="evidence-list"><h2>觀察三個證據</h2><ul><li>燈泡在同一路或不同支路？</li><li>故障位置在哪裡？</li><li>另一顆燈泡還有完整通路嗎？</li></ul></div></div></div>
+      <div class="lab-layout"><div class="control-card"><h2>實驗控制台</h2><label>燈泡接法<select id="labMode"><option value="series">燈泡串聯</option><option value="parallel">燈泡並聯</option></select></label><label class="check-row"><input id="labFault" type="checkbox"> 第 2 顆燈泡故障</label><fieldset><legend>先做預測</legend><label><input type="radio" name="prediction" value="both-on"> 兩顆都亮</label><label><input type="radio" name="prediction" value="both-off"> 兩顆都不亮</label><label><input type="radio" name="prediction" value="one-on"> 只有第 1 顆亮</label></fieldset><button id="runLab" type="button" class="primary-button">驗證結果</button><button id="resetLab" type="button" class="secondary-button">重設實驗</button></div><div class="lab-result"><div id="houseCircuit" class="house-circuit series" role="img" aria-label="兩顆燈泡串聯且正常發亮"><svg viewBox="0 0 640 300" aria-hidden="true"><g class="lab-series-diagram"><path d="M85 230V80H210 M280 80H360 M430 80H555V230H370 M270 230H85" class="wire lab-wire"/><g class="lab-svg-bulb one dim" transform="translate(245 80)"><circle r="34"/><path d="M-15 28h30v25h-30z"/></g><g class="lab-svg-bulb two dim" transform="translate(395 80)"><circle r="34"/><path d="M-15 28h30v25h-30z"/></g><g class="lab-svg-battery" transform="translate(320 230)"><rect x="-50" y="-25" width="100" height="50" rx="10"/><path d="M-9-35v16M9-43v31"/><text x="-40" y="7">−</text><text x="30" y="7">＋</text></g><path class="fault-mark" d="M375 55l40 40m0-40-40 40"/></g><g class="lab-parallel-diagram"><path d="M115 230V65H270 M370 65H525V230H370 M270 230H115 M115 150H270 M370 150H525" class="wire lab-wire"/><circle cx="115" cy="65" r="8" class="junction"/><circle cx="525" cy="65" r="8" class="junction"/><circle cx="115" cy="150" r="8" class="junction"/><circle cx="525" cy="150" r="8" class="junction"/><g class="lab-svg-bulb one" transform="translate(320 65)"><circle r="34"/><path d="M-15 28h30v25h-30z"/></g><g class="lab-svg-bulb two" transform="translate(320 150)"><circle r="34"/><path d="M-15 28h30v25h-30z"/></g><g class="lab-svg-battery" transform="translate(320 230)"><rect x="-50" y="-25" width="100" height="50" rx="10"/><path d="M-9-35v16M9-43v31"/><text x="-40" y="7">−</text><text x="30" y="7">＋</text></g><path class="fault-mark" d="M300 130l40 40m0-40-40 40"/></g></svg></div><div id="labFeedback" class="feedback large" aria-live="polite"><strong>操作提示：</strong>選擇燈泡接法、預測結果，再按「驗證結果」。</div><div class="evidence-list"><h2>觀察三個證據</h2><ul><li>燈泡在同一路或不同支路？</li><li>故障位置在哪裡？</li><li>另一顆燈泡還有完整通路嗎？</li></ul></div></div></div>
     </section>
 
     <section class="tab-panel" id="life" role="tabpanel" aria-labelledby="tab-life" hidden>
@@ -106,7 +124,7 @@
     </section>
 
     <section class="tab-panel" id="resources" role="tabpanel" aria-labelledby="tab-resources" hidden>
-      <header class="panel-heading"><span class="eyebrow">自主學習</span><h1>繼續探索電路世界</h1><p>這些資源來自教育機構、科學教育網站與可信賴的互動平台，連結已於 2026-07-12 查核。</p></header><div id="resourceGrid" class="resource-grid"></div><aside class="teacher-note"><h2>給老師與家長</h2><p>可先讓學生獨立操作，再用「你看見什麼證據？」追問。實作時只使用乾電池與低電壓燈泡，不碰插座或拆解家電。</p><a href="./docs/lesson-plan.md">查看教師使用說明</a></aside>
+      <header class="panel-heading"><span class="eyebrow">自主學習</span><h1>繼續探索電路世界</h1><p>這些資源來自教育機構、科學教育網站與可信賴的互動平台，連結已於 2026-07-13 查核。</p></header><div id="resourceGrid" class="resource-grid"></div><aside class="teacher-note"><h2>給老師與家長</h2><p>可先讓學生獨立操作，再用「你看見什麼證據？」追問。實作時只使用乾電池與低電壓燈泡，不碰插座或拆解家電。</p><a href="./docs/lesson-plan.md">查看教師使用說明</a></aside>
     </section>
   </main>
 

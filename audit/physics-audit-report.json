@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-07-13T11:36:47.642Z",
+  "project": "C:\\Users\\user\\Documents\\網站調整\\circuit",
+  "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+  "summary": {
+    "passed": 20,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "id": "資料載入",
+      "ok": true,
+      "detail": "生活應用與資源已載入"
+    },
+    {
+      "id": "教材結構",
+      "ok": true,
+      "detail": "{\"tabs\":7,\"apps\":6,\"resources\":8,\"duplicateIds\":[]}"
+    },
+    {
+      "id": "SVG／DOM ID 唯一",
+      "ok": true,
+      "detail": "無重複 ID"
+    },
+    {
+      "id": "完整通路開關",
+      "ok": true,
+      "detail": "{\"on\":\"true\",\"label\":\"開關閉合，形成完整通路，燈泡發亮\",\"contained\":true}"
+    },
+    {
+      "id": "接法：bulb-series",
+      "ok": true,
+      "detail": "{\"mode\":\"bulb-series\",\"visible\":1,\"title\":\"兩顆燈泡共用一條通路\",\"feedback\":\"兩顆都熄滅：拿掉一顆燈泡後，唯一的通路被切斷。\",\"ok\":true}"
+    },
+    {
+      "id": "接法：bulb-parallel",
+      "ok": true,
+      "detail": "{\"mode\":\"bulb-parallel\",\"visible\":1,\"title\":\"兩顆燈泡分別接在兩條支路\",\"feedback\":\"第 1 顆仍亮：第 2 支路中斷，但第 1 支路仍是完整通路。\",\"ok\":true}"
+    },
+    {
+      "id": "接法：battery-series",
+      "ok": true,
+      "detail": "{\"mode\":\"battery-series\",\"visible\":1,\"title\":\"第 1 顆正極接第 2 顆負極\",\"feedback\":\"燈泡熄滅：拿掉一顆電池後，串聯的唯一通路被切斷。\",\"ok\":true}"
+    },
+    {
+      "id": "接法：battery-parallel",
+      "ok": true,
+      "detail": "{\"mode\":\"battery-parallel\",\"visible\":1,\"title\":\"正極接正極，負極接負極\",\"feedback\":\"燈泡仍亮：拿掉一顆後，另一顆仍形成通路，但可使用的時間會縮短。\",\"ok\":true}"
+    },
+    {
+      "id": "故障規則：series-normal",
+      "ok": true,
+      "detail": "{\"id\":\"series-normal\",\"mode\":\"series\",\"fault\":false,\"prediction\":\"both-on\",\"labelIncludes\":\"串聯且正常發亮\",\"feedbackIncludes\":\"兩顆都亮\",\"label\":\"兩顆燈泡串聯且正常發亮\",\"feedback\":\"觀察結果：兩顆都亮。它們共用一條路。\",\"ok\":true}"
+    },
+    {
+      "id": "故障規則：series-fault",
+      "ok": true,
+      "detail": "{\"id\":\"series-fault\",\"mode\":\"series\",\"fault\":true,\"prediction\":\"both-off\",\"labelIncludes\":\"兩顆燈泡都不亮\",\"feedbackIncludes\":\"唯一通路被故障處切斷\",\"label\":\"第 2 顆燈泡故障，串聯的兩顆燈泡都不亮\",\"feedback\":\"預測成功！串聯的唯一通路被故障處切斷，兩顆都不亮。\",\"ok\":true}"
+    },
+    {
+      "id": "故障規則：parallel-fault",
+      "ok": true,
+      "detail": "{\"id\":\"parallel-fault\",\"mode\":\"parallel\",\"fault\":true,\"prediction\":\"one-on\",\"labelIncludes\":\"第 1 顆仍亮\",\"feedbackIncludes\":\"第 1 條支路仍完整\",\"label\":\"第 2 顆燈泡故障，並聯的第 1 顆仍亮\",\"feedback\":\"預測成功！並聯的第 1 條支路仍完整，所以第 1 顆繼續亮。\",\"ok\":true}"
+    },
+    {
+      "id": "生活應用觀察證據",
+      "ok": true,
+      "detail": "[{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true}]"
+    },
+    {
+      "id": "題庫邊界與答案分布",
+      "ok": true,
+      "detail": "10 題；答案位置 0, 1, 2, 3"
+    },
+    {
+      "id": "響應式：desktop",
+      "ok": true,
+      "detail": "[{\"tab\":\"mission\",\"width\":1440,\"innerWidth\":1440},{\"tab\":\"light\",\"width\":1425,\"innerWidth\":1440},{\"tab\":\"connections\",\"width\":1425,\"innerWidth\":1440},{\"tab\":\"lab\",\"width\":1425,\"innerWidth\":1440},{\"tab\":\"life\",\"width\":1425,\"innerWidth\":1440},{\"tab\":\"quiz\",\"width\":1425,\"innerWidth\":1440},{\"tab\":\"resources\",\"width\":1425,\"innerWidth\":1440}]"
+    },
+    {
+      "id": "響應式：tablet",
+      "ok": true,
+      "detail": "[{\"tab\":\"mission\",\"width\":753,\"innerWidth\":768},{\"tab\":\"light\",\"width\":753,\"innerWidth\":768},{\"tab\":\"connections\",\"width\":753,\"innerWidth\":768},{\"tab\":\"lab\",\"width\":753,\"innerWidth\":768},{\"tab\":\"life\",\"width\":753,\"innerWidth\":768},{\"tab\":\"quiz\",\"width\":768,\"innerWidth\":768},{\"tab\":\"resources\",\"width\":753,\"innerWidth\":768}]"
+    },
+    {
+      "id": "響應式：mobile",
+      "ok": true,
+      "detail": "[{\"tab\":\"mission\",\"width\":375,\"innerWidth\":390},{\"tab\":\"light\",\"width\":375,\"innerWidth\":390},{\"tab\":\"connections\",\"width\":375,\"innerWidth\":390},{\"tab\":\"lab\",\"width\":375,\"innerWidth\":390},{\"tab\":\"life\",\"width\":375,\"innerWidth\":390},{\"tab\":\"quiz\",\"width\":375,\"innerWidth\":390},{\"tab\":\"resources\",\"width\":375,\"innerWidth\":390}]"
+    },
+    {
+      "id": "降低動畫偏好",
+      "ok": true,
+      "detail": "{\"paused\":true,\"status\":\"步驟 4／4：共同兩端接入燈泡電路（已依降低動畫偏好顯示完成狀態）\"}"
+    },
+    {
+      "id": "隱藏頁籤停止動畫",
+      "ok": true,
+      "detail": "{\"paused\":true,\"playing\":\"false\"}"
+    },
+    {
+      "id": "瀏覽器主控台",
+      "ok": true,
+      "detail": "無錯誤"
+    },
+    {
+      "id": "關鍵請求",
+      "ok": true,
+      "detail": "無 4xx／5xx"
+    }
+  ],
+  "rerunCommand": "node .\\scripts\\audit-circuit.mjs --project . --config .\\physics-audit.json --output .\\audit\\physics-audit-report.json --markdown .\\audit\\physics-audit-report.md"
+}

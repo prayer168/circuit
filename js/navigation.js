@@ -24,6 +24,7 @@ export function showTab(id, focus = false) {
   next.disabled = index === tabs.length - 1;
   position.textContent = `${index + 1} / ${tabs.length}`;
   onChange(id, index);
+  document.dispatchEvent(new CustomEvent('lesson:tabchange', { detail: { id, index } }));
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

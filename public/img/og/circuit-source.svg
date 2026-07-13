@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">電路好好玩</title>
+  <desc id="desc">國小四年級互動自然教材社群預覽圖，呈現電池、兩顆燈泡和完整通路。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7faf9"/>
+      <stop offset="1" stop-color="#def7ee"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#17324d" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1090" cy="90" r="180" fill="#fff3c4" opacity="0.72"/>
+  <circle cx="80" cy="590" r="160" fill="#cdeee4" opacity="0.8"/>
+  <g transform="translate(82 72)">
+    <rect width="70" height="70" rx="22" fill="#fff3c4"/>
+    <path d="M25 34a10 10 0 1 1 20 0c0 5-3 8-6 11H31c-3-3-6-6-6-11Z" fill="#ffc94a" stroke="#143d59" stroke-width="4"/>
+    <path d="M31 47h8v8h-8z" fill="#143d59"/>
+  </g>
+  <text x="175" y="113" font-family="Noto Sans TC, sans-serif" font-size="28" font-weight="700" fill="#143d59">國小四年級・自然科學</text>
+  <text x="82" y="245" font-family="Noto Sans TC, sans-serif" font-size="76" font-weight="900" letter-spacing="-3" fill="#143d59">電路好好玩</text>
+  <text x="85" y="310" font-family="Noto Sans TC, sans-serif" font-size="30" font-weight="500" fill="#5d7185">接通、比較、預測，用觀察證據解開電路任務</text>
+  <g transform="translate(82 365)" font-family="Noto Sans TC, sans-serif" font-weight="700" font-size="23">
+    <rect width="174" height="58" rx="29" fill="#143d59"/>
+    <text x="87" y="38" text-anchor="middle" fill="#fff">通路與斷路</text>
+    <rect x="192" width="174" height="58" rx="29" fill="#ffc94a"/>
+    <text x="279" y="38" text-anchor="middle" fill="#143d59">串聯與並聯</text>
+    <rect x="384" width="174" height="58" rx="29" fill="#53c6a1"/>
+    <text x="471" y="38" text-anchor="middle" fill="#143d59">故障與安全</text>
+  </g>
+  <text x="85" y="520" font-family="Noto Sans TC, sans-serif" font-size="23" font-weight="700" fill="#2878a5">prayer168.github.io/circuit/</text>
+  <g transform="translate(700 120)" filter="url(#shadow)">
+    <rect width="420" height="390" rx="52" fill="#fff" stroke="#dbe7e5" stroke-width="3"/>
+    <path d="M70 285V95H140 M210 95H250 M320 95H350V285H255 M165 285H70" fill="none" stroke="#143d59" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(175 95)">
+      <circle r="38" fill="#ffc94a" stroke="#143d59" stroke-width="8"/>
+      <path d="M-17 31h34v28h-34z" fill="#c8d2d1" stroke="#143d59" stroke-width="7"/>
+    </g>
+    <g transform="translate(285 95)">
+      <circle r="38" fill="#ffc94a" stroke="#143d59" stroke-width="8"/>
+      <path d="M-17 31h34v28h-34z" fill="#c8d2d1" stroke="#143d59" stroke-width="7"/>
+    </g>
+    <g transform="translate(210 285)">
+      <rect x="-48" y="-28" width="96" height="56" rx="12" fill="#fff3c4" stroke="#143d59" stroke-width="8"/>
+      <path d="M-10-39v18M10-48v36" stroke="#143d59" stroke-width="8"/>
+      <text x="-39" y="8" font-family="sans-serif" font-size="26" font-weight="900" fill="#143d59">−</text>
+      <text x="28" y="8" font-family="sans-serif" font-size="26" font-weight="900" fill="#143d59">＋</text>
+    </g>
+    <circle cx="70" cy="175" r="8" fill="#ef6f61"/>
+    <circle cx="350" cy="190" r="8" fill="#ef6f61"/>
+    <circle cx="310" cy="285" r="8" fill="#ef6f61"/>
+    <text x="210" y="355" text-anchor="middle" font-family="Noto Sans TC, sans-serif" font-size="23" font-weight="700" fill="#5d7185">完整通路，燈泡才會亮</text>
+  </g>
+</svg>

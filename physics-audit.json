@@ -1,0 +1,33 @@
+{
+  "entry": "index.html",
+  "selectors": {
+    "basicSwitch": "#basicSwitch",
+    "basicDemo": "#basicDemo",
+    "modeButtons": ".mode-button",
+    "connectionStage": ".connection-stage",
+    "visibleDiagram": ".circuit-diagram:not([hidden])",
+    "removeComponent": "#removeComponent",
+    "connectionFeedback": "#connectionFeedback",
+    "labMode": "#labMode",
+    "labFault": "#labFault",
+    "runLab": "#runLab",
+    "houseCircuit": "#houseCircuit",
+    "labFeedback": "#labFeedback"
+  },
+  "modes": {
+    "bulb-series": {"title":"兩顆燈泡共用一條通路","removedEvidence":"兩顆都熄滅"},
+    "bulb-parallel": {"title":"兩顆燈泡分別接在兩條支路","removedEvidence":"第 1 顆仍亮"},
+    "battery-series": {"title":"第 1 顆正極接第 2 顆負極","removedEvidence":"燈泡熄滅"},
+    "battery-parallel": {"title":"正極接正極，負極接負極","removedEvidence":"燈泡仍亮"}
+  },
+  "labCases": [
+    {"id":"series-normal","mode":"series","fault":false,"prediction":"both-on","labelIncludes":"串聯且正常發亮","feedbackIncludes":"兩顆都亮"},
+    {"id":"series-fault","mode":"series","fault":true,"prediction":"both-off","labelIncludes":"兩顆燈泡都不亮","feedbackIncludes":"唯一通路被故障處切斷"},
+    {"id":"parallel-fault","mode":"parallel","fault":true,"prediction":"one-on","labelIncludes":"第 1 顆仍亮","feedbackIncludes":"第 1 條支路仍完整"}
+  ],
+  "viewports": [
+    {"name":"desktop","width":1440,"height":1000},
+    {"name":"tablet","width":768,"height":1024},
+    {"name":"mobile","width":390,"height":844}
+  ]
+}
