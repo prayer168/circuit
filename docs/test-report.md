@@ -21,7 +21,7 @@
 | 響應式 | 通過 | 1440×1000、768×1024、390×844 逐頁無水平溢出 |
 | 瀏覽器品質 | 通過 | 實際瀏覽器操作無錯誤覆蓋層、主控台錯誤或 4xx／5xx 關鍵請求 |
 | 社群分享 | 通過 | 1200×630 PNG、Open Graph 與 Twitter Card metadata 已建置 |
-| 公開部署 | 通過 | GitHub Pages run `29247316534` 成功；首頁、JavaScript、教材資料與分享 PNG 均回應 200 |
+| 公開部署 | 通過 | GitHub Pages run `29290429881` 成功；公開版已包含流動光點，首頁回應 200 |
 
 ## 物理與互動稽核
 
@@ -55,7 +55,7 @@
 ## 公開版驗證
 
 - 網址：https://prayer168.github.io/circuit/
-- 驗證 commit：`fd85ec2`
+- 驗證 commit：`7a76441`
 - GitHub Pages：build、report-build-status、deploy 全部成功。
 - 390×844 公開版逐頁最大水平溢出為 0；觸控可切換頁籤、閉合開關並揭示生活卡。
 - 公開版共有 7 個頁籤、6 張生活卡與 8 筆自主學習資源，無錯誤覆蓋層或主控台錯誤。
