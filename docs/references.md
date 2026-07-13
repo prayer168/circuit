@@ -19,6 +19,12 @@
 - 科羅拉多大學 PhET〈電路組裝套件：直流電〉
   https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_zh_TW.html
   用途：比對電池、燈泡、開關與電流顯示，並作為延伸互動模擬。教材只連結原站。
+- 教育部中小學科學教育專案報告
+  https://www.sec.ntnu.edu.tw/uploads/asset/data/64b7ea2f0e0b3083dda19690/09_%E6%96%B0%E5%8C%97%E5%B8%82%E5%8F%8A%E4%BA%BA%E5%B0%8F%E5%AD%B8.pdf
+  用途：確認無燈座時，一條電線接小燈泡底部，另一條接小燈泡側邊，才能形成通路。
+- 教育大市集〈電流、電壓與歐姆定律〉
+  https://market.cloud.edu.tw/resources/web/1772837
+  用途：確認傳統電流由電池正極經外部電路流向負極，電子移動方向相反。
 
 ## 安全用電
 

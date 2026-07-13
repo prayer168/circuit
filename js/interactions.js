@@ -32,28 +32,28 @@ export function initConnectionComparison() {
   const modes = {
     'bulb-series': {
       diagram: 'bulbSeriesDiagram', badge: '燈泡串聯', title: '兩顆燈泡共用一條通路', component: '燈泡',
-      svgTitle: '燈泡串聯電路', desc: '一顆電池和兩顆燈泡形成單一通路，兩顆燈泡依序接在同一條線路上。',
+      svgTitle: '燈泡串聯電路', desc: '一顆電池和兩顆燈泡形成單一通路；每顆燈泡的一條線接側邊金屬殼，另一條接底部接點，傳統電流由正極流向負極。',
       steps: ['從電池正極出發', '依序經過兩顆燈泡', '沿同一條路前進', '回到電池負極'],
       feedback: '和一顆燈泡相比，兩顆相同燈泡串聯時通常較暗。',
       broken: '<strong>兩顆都熄滅：</strong>拿掉一顆燈泡後，唯一的通路被切斷。'
     },
     'bulb-parallel': {
       diagram: 'bulbParallelDiagram', badge: '燈泡並聯', title: '兩顆燈泡分別接在兩條支路', component: '燈泡',
-      svgTitle: '燈泡並聯電路', desc: '一顆電池連接兩條支路，每條支路各有一顆燈泡，兩端接在共同接點。',
+      svgTitle: '燈泡並聯電路', desc: '一顆電池連接兩條支路，每條支路各有一顆燈泡；電線接側邊金屬殼與底部接點，傳統電流由正極分流後回到負極。',
       steps: ['從電池正極出發', '在共同接點分成兩路', '每路各經過一顆燈泡', '會合後回到電池負極'],
       feedback: '兩顆相同燈泡各接在一條支路，亮度通常接近單顆燈泡。',
       broken: '<strong>第 1 顆仍亮：</strong>第 2 支路中斷，但第 1 支路仍是完整通路。'
     },
     'battery-series': {
       diagram: 'batterySeriesDiagram', badge: '電池串聯', title: '第 1 顆正極接第 2 顆負極', component: '電池',
-      svgTitle: '電池串聯電路', desc: '兩顆電池頭尾相接，第一顆正極接第二顆負極，再與一顆燈泡形成單一通路。',
+      svgTitle: '電池串聯電路', desc: '兩顆電池頭尾相接，第一顆正極接第二顆負極；燈泡電線接側邊金屬殼與底部接點，傳統電流由電池組正極流向負極。',
       steps: ['確認兩顆電池方向相同', '第 1 顆正極接第 2 顆負極', '剩下兩端接入電路', '電流經燈泡形成通路'],
       feedback: '兩顆相同電池串聯時，電壓效果相加，燈泡通常比使用一顆電池更亮。',
       broken: '<strong>燈泡熄滅：</strong>拿掉一顆電池後，串聯的唯一通路被切斷。'
     },
     'battery-parallel': {
       diagram: 'batteryParallelDiagram', badge: '電池並聯', title: '正極接正極，負極接負極', component: '電池',
-      svgTitle: '電池並聯電路', desc: '兩顆同規格電池的正極連在一起、負極連在一起，再與一顆燈泡形成通路。',
+      svgTitle: '電池並聯電路', desc: '兩顆同規格電池的正極連在一起、負極連在一起；燈泡電線接側邊金屬殼與底部接點，傳統電流由共同正極流向共同負極。',
       steps: ['確認電池同品牌同規格', '兩顆正極連在一起', '兩顆負極連在一起', '共同兩端接入燈泡電路'],
       feedback: '兩顆相同電池並聯時，燈泡亮度通常接近使用一顆電池，但可使用較久。',
       broken: '<strong>燈泡仍亮：</strong>拿掉一顆後，另一顆仍形成通路，但可使用的時間會縮短。'
