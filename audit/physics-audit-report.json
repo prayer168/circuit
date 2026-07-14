@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-13T22:34:16.450Z",
-  "project": "D:\\我的雲端硬碟\\google drive\\000000000backup\\0000000000數位教材\\circuit",
+  "generatedAt": "2026-07-14T00:15:32.826Z",
+  "project": "C:\\Users\\user\\Documents\\網站調整\\circuit",
   "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "summary": {
-    "passed": 20,
+    "passed": 22,
     "failed": 0
   },
   "checks": [
@@ -46,6 +46,16 @@
       "id": "接法：battery-parallel",
       "ok": true,
       "detail": "{\"mode\":\"battery-parallel\",\"visible\":1,\"title\":\"正極接正極，負極接負極\",\"feedback\":\"燈泡仍亮：拿掉一顆後，另一顆仍形成通路，但可使用的時間會縮短。\",\"ok\":true}"
+    },
+    {
+      "id": "實驗接法即時同步",
+      "ok": true,
+      "detail": "{\"parallelClass\":true,\"diagramVisible\":true,\"prompt\":\"先做預測：目前是燈泡並聯。觀察接線後選擇預測，再按「驗證結果」。\",\"ok\":true}"
+    },
+    {
+      "id": "並聯支路接到燈泡端點",
+      "ok": true,
+      "detail": "[{\"name\":\"one\",\"leftGap\":1.00384521484375,\"rightGap\":1.00384521484375,\"ok\":true},{\"name\":\"two\",\"leftGap\":1.00384521484375,\"rightGap\":1.00384521484375,\"ok\":true}]"
     },
     {
       "id": "故障規則：series-normal",

@@ -131,6 +131,17 @@ export function initLab() {
   const faultInput = document.querySelector('#labFault');
   const circuit = document.querySelector('#houseCircuit');
   const feedback = document.querySelector('#labFeedback');
+  const predictions = document.querySelectorAll('input[name="prediction"]');
+  const renderPreview = () => {
+    const mode = modeInput.value;
+    const modeLabel = mode === 'series' ? '串聯' : '並聯';
+    circuit.className = `house-circuit ${mode}`;
+    circuit.setAttribute('aria-label', `兩顆燈泡${modeLabel}接線示意，尚未驗證${faultInput.checked ? '第 2 顆燈泡故障' : '正常'}結果`);
+    predictions.forEach(input => input.checked = false);
+    feedback.innerHTML = `<strong>先做預測：</strong>目前是燈泡${modeLabel}${faultInput.checked ? '，第 2 顆設定為故障' : ''}。觀察接線後選擇預測，再按「驗證結果」。`;
+  };
+  modeInput.addEventListener('change', renderPreview);
+  faultInput.addEventListener('change', renderPreview);
   document.querySelector('#runLab').addEventListener('click', () => {
     const mode = modeInput.value;
     const fault = faultInput.checked;
@@ -147,7 +158,7 @@ export function initLab() {
   });
   document.querySelector('#resetLab').addEventListener('click', () => {
     modeInput.value = 'series'; faultInput.checked = false;
-    document.querySelectorAll('input[name="prediction"]').forEach(input => input.checked = false);
+    predictions.forEach(input => input.checked = false);
     circuit.className = 'house-circuit series';
     circuit.setAttribute('aria-label', '兩顆燈泡串聯且正常發亮');
     feedback.innerHTML = '<strong>操作提示：</strong>選擇接法、預測結果，再按「驗證結果」。';

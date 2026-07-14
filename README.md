@@ -82,7 +82,7 @@ HTML5、CSS3、SVG、原生 JavaScript、JSON、Vite。
 
 ## 版本
 
-目前版本：v1.2.0。完整內容請見 [CHANGELOG.md](./CHANGELOG.md)。
+目前版本：v1.2.2。完整內容請見 [CHANGELOG.md](./CHANGELOG.md)。
 
 ## 授權與引用
 

@@ -238,21 +238,45 @@ async function main() {
     }, config);
     for (const result of modes) checks.push(check(`接法：${result.mode}`, result.ok, JSON.stringify(result)));
 
-    const labs = await client.evaluate(configValue => {
+    const labAudit = await client.evaluate(configValue => {
       document.querySelector('#tab-lab').click();
-      return configValue.labCases.map(testCase => {
-        const mode = document.querySelector(configValue.selectors.labMode);
-        const fault = document.querySelector(configValue.selectors.labFault);
+      const mode = document.querySelector(configValue.selectors.labMode);
+      const fault = document.querySelector(configValue.selectors.labFault);
+      mode.value = 'parallel';
+      mode.dispatchEvent(new Event('change', { bubbles: true }));
+      const circuit = document.querySelector(configValue.selectors.houseCircuit);
+      const parallelDiagram = document.querySelector(configValue.selectors.parallelDiagram);
+      const preview = {
+        parallelClass: circuit.classList.contains('parallel'),
+        diagramVisible: getComputedStyle(parallelDiagram).display !== 'none',
+        prompt: document.querySelector(configValue.selectors.labFeedback).textContent
+      };
+      preview.ok = preview.parallelClass && preview.diagramVisible && preview.prompt.includes('目前是燈泡並聯');
+      const branchNames = ['one', 'two'];
+      const branchGaps = branchNames.map(name => {
+        const bulb = parallelDiagram.querySelector(`.lab-svg-bulb.${name} circle`).getBoundingClientRect();
+        const left = parallelDiagram.querySelector(`.branch-${name}-left`).getBoundingClientRect();
+        const right = parallelDiagram.querySelector(`.branch-${name}-right`).getBoundingClientRect();
+        const leftGap = bulb.left - left.right;
+        const rightGap = right.left - bulb.right;
+        return { name, leftGap, rightGap, ok: Math.abs(leftGap) <= 4 && Math.abs(rightGap) <= 4 };
+      });
+      const cases = configValue.labCases.map(testCase => {
         mode.value = testCase.mode;
+        mode.dispatchEvent(new Event('change', { bubbles: true }));
         fault.checked = testCase.fault;
+        fault.dispatchEvent(new Event('change', { bubbles: true }));
         document.querySelectorAll('input[name="prediction"]').forEach(input => { input.checked = input.value === testCase.prediction; });
         document.querySelector(configValue.selectors.runLab).click();
         const label = document.querySelector(configValue.selectors.houseCircuit).getAttribute('aria-label');
         const feedback = document.querySelector(configValue.selectors.labFeedback).textContent;
         return { ...testCase, label, feedback, ok: label.includes(testCase.labelIncludes) && feedback.includes(testCase.feedbackIncludes) };
       });
+      return { preview, branchGaps, cases };
     }, config);
-    for (const result of labs) checks.push(check(`故障規則：${result.id}`, result.ok, JSON.stringify(result)));
+    checks.push(check('實驗接法即時同步', labAudit.preview.ok, JSON.stringify(labAudit.preview)));
+    checks.push(check('並聯支路接到燈泡端點', labAudit.branchGaps.every(result => result.ok), JSON.stringify(labAudit.branchGaps)));
+    for (const result of labAudit.cases) checks.push(check(`故障規則：${result.id}`, result.ok, JSON.stringify(result)));
 
     const applications = await client.evaluate(async () => {
       document.querySelector('#tab-life').click();

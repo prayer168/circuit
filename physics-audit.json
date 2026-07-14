@@ -12,7 +12,8 @@
     "labFault": "#labFault",
     "runLab": "#runLab",
     "houseCircuit": "#houseCircuit",
-    "labFeedback": "#labFeedback"
+    "labFeedback": "#labFeedback",
+    "parallelDiagram": ".lab-parallel-diagram"
   },
   "modes": {
     "bulb-series": {"title":"兩顆燈泡共用一條通路","removedEvidence":"兩顆都熄滅"},

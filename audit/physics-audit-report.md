@@ -1,8 +1,8 @@
 # 電路物理互動稽核報告
 
-- 稽核時間：2026-07-13T22:34:16.450Z
+- 稽核時間：2026-07-14T00:15:32.826Z
 - 結果：通過
-- 通過／失敗：20／0
+- 通過／失敗：22／0
 
 | 檢查項目 | 結果 | 說明 |
 |---|---:|---|
@@ -14,6 +14,8 @@
 | 接法：bulb-parallel | 通過 | {"mode":"bulb-parallel","visible":1,"title":"兩顆燈泡分別接在兩條支路","feedback":"第 1 顆仍亮：第 2 支路中斷，但第 1 支路仍是完整通路。","ok":true} |
 | 接法：battery-series | 通過 | {"mode":"battery-series","visible":1,"title":"第 1 顆正極接第 2 顆負極","feedback":"燈泡熄滅：拿掉一顆電池後，串聯的唯一通路被切斷。","ok":true} |
 | 接法：battery-parallel | 通過 | {"mode":"battery-parallel","visible":1,"title":"正極接正極，負極接負極","feedback":"燈泡仍亮：拿掉一顆後，另一顆仍形成通路，但可使用的時間會縮短。","ok":true} |
+| 實驗接法即時同步 | 通過 | {"parallelClass":true,"diagramVisible":true,"prompt":"先做預測：目前是燈泡並聯。觀察接線後選擇預測，再按「驗證結果」。","ok":true} |
+| 並聯支路接到燈泡端點 | 通過 | [{"name":"one","leftGap":1.00384521484375,"rightGap":1.00384521484375,"ok":true},{"name":"two","leftGap":1.00384521484375,"rightGap":1.00384521484375,"ok":true}] |
 | 故障規則：series-normal | 通過 | {"id":"series-normal","mode":"series","fault":false,"prediction":"both-on","labelIncludes":"串聯且正常發亮","feedbackIncludes":"兩顆都亮","label":"兩顆燈泡串聯且正常發亮","feedback":"觀察結果：兩顆都亮。它們共用一條路。","ok":true} |
 | 故障規則：series-fault | 通過 | {"id":"series-fault","mode":"series","fault":true,"prediction":"both-off","labelIncludes":"兩顆燈泡都不亮","feedbackIncludes":"唯一通路被故障處切斷","label":"第 2 顆燈泡故障，串聯的兩顆燈泡都不亮","feedback":"預測成功！串聯的唯一通路被故障處切斷，兩顆都不亮。","ok":true} |
 | 故障規則：parallel-fault | 通過 | {"id":"parallel-fault","mode":"parallel","fault":true,"prediction":"one-on","labelIncludes":"第 1 顆仍亮","feedbackIncludes":"第 1 條支路仍完整","label":"第 2 顆燈泡故障，並聯的第 1 顆仍亮","feedback":"預測成功！並聯的第 1 條支路仍完整，所以第 1 顆繼續亮。","ok":true} |
