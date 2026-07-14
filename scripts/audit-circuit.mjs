@@ -32,7 +32,7 @@ function mimeType(file) {
   return ({
     '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8',
     '.css': 'text/css; charset=utf-8', '.json': 'application/json; charset=utf-8',
-    '.svg': 'image/svg+xml', '.png': 'image/png', '.md': 'text/markdown; charset=utf-8'
+    '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.md': 'text/markdown; charset=utf-8'
   })[path.extname(file).toLowerCase()] || 'application/octet-stream';
 }
 
@@ -42,8 +42,8 @@ async function startServer(root, entry) {
     try {
       const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
       let relative = pathname === '/' ? entry : pathname.replace(/^\/+/, '');
-      if (relative.startsWith('img/')) relative = path.join('public', relative);
-      const file = path.resolve(absoluteRoot, relative);
+      let file = path.resolve(absoluteRoot, relative);
+      if (relative.startsWith('img/') && !fs.existsSync(file)) file = path.resolve(absoluteRoot, 'public', relative);
       if (!file.startsWith(`${absoluteRoot}${path.sep}`)) throw new Error('Forbidden');
       const stat = await fsp.stat(file);
       if (!stat.isFile()) throw new Error('Not a file');
@@ -284,10 +284,12 @@ async function main() {
       await new Promise(resolve => setTimeout(resolve, 350));
       return [...document.querySelectorAll('.application-card')].map(card => ({
         answerVisible: !card.querySelector('.application-answer').hidden,
-        evidenceVisible: Number(getComputedStyle(card.querySelector('.scene-evidence')).opacity) > 0.9
+        evidenceVisible: Number(getComputedStyle(card.querySelector('.scene-evidence')).opacity) > 0.9,
+        photoLoaded: card.querySelector('.photo-visual img')?.complete && card.querySelector('.photo-visual img')?.naturalWidth === 960,
+        photoSource: card.querySelector('.photo-visual img')?.getAttribute('src') || ''
       }));
     });
-    checks.push(check('生活應用觀察證據', applications.length === 6 && applications.every(item => item.answerVisible && item.evidenceVisible), JSON.stringify(applications)));
+    checks.push(check('生活應用寫實照片與觀察證據', applications.length === 6 && applications.every(item => item.answerVisible && item.evidenceVisible && item.photoLoaded && item.photoSource.endsWith('.webp')), JSON.stringify(applications)));
 
     const quiz = JSON.parse(await fsp.readFile(path.join(project, 'data', 'quiz.json'), 'utf8'));
     const answerPositions = new Set(quiz.map(item => item.answer));

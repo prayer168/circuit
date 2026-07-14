@@ -165,21 +165,24 @@ export function initLab() {
   });
 }
 
-const sceneSvg = (type, label) => {
-  const scenes = {
-    flashlight:'<path d="M55 72h92l42 24-42 24H55z" class="scene-safe"/><path d="M188 84l70-28v80l-70-28z" fill="#fff3c4" class="scene-evidence"/><circle cx="82" cy="96" r="15" class="scene-accent"/>',
-    home:'<path d="M58 103l72-55 72 55v70H58z" class="scene-safe"/><rect x="84" y="116" width="35" height="57" fill="#fff"/><rect x="143" y="116" width="35" height="30" class="scene-accent scene-evidence"/><path d="M130 48v-22" class="scene-line"/>',
-    string:'<path d="M35 55q95 75 215 0" class="scene-line"/><circle cx="67" cy="81" r="16" class="scene-accent"/><circle cx="120" cy="101" r="16" class="scene-accent"/><circle cx="175" cy="97" r="16" class="scene-accent"/><circle cx="225" cy="76" r="16" class="scene-accent"/><path d="M160 82l30 30m0-30-30 30" class="scene-line scene-evidence" stroke="#ef6f61"/>',
-    powerstrip:'<rect x="38" y="62" width="210" height="86" rx="26" class="scene-safe"/><circle cx="86" cy="105" r="20" fill="#fff"/><circle cx="145" cy="105" r="20" fill="#fff"/><circle cx="204" cy="105" r="20" fill="#fff"/><path d="M248 105h30" class="scene-line"/><path d="M126 41h72" stroke="#ef6f61" stroke-width="12" stroke-linecap="round" class="scene-evidence"/>',
-    breaker:'<rect x="77" y="35" width="130" height="135" rx="18" fill="#fff" stroke="#143d59" stroke-width="7"/><rect x="115" y="58" width="55" height="78" rx="12" class="scene-safe"/><path d="M142 137v25" class="scene-line"/><path d="M104 146l76-88" stroke="#ef6f61" stroke-width="11" stroke-linecap="round" class="scene-evidence"/>',
-    safety:'<path d="M120 30l100 165H20z" fill="#fff3c4" stroke="#143d59" stroke-width="7"/><path d="M128 65l-30 65h32l-16 42 54-72h-33l18-35z" class="scene-danger"/><path d="M233 56q25 23 0 46q-25-23 0-46z" fill="#4aa8d8" class="scene-evidence"/>'
-  };
-  return `<svg class="app-visual" viewBox="0 0 280 200" role="img" aria-label="${label}">${scenes[type]}</svg>`;
+const scenePhotos = {
+  flashlight: { src: new URL('../img/applications/flashlight.webp', import.meta.url).href, evidence: '按鍵控制', spot: ['53%', '53%'] },
+  home: { src: new URL('../img/applications/home-lighting.webp', import.meta.url).href, evidence: '分開控制', spot: ['31%', '18%'], secondSpot: ['70%', '18%'] },
+  string: { src: new URL('../img/applications/string-lights.webp', import.meta.url).href, evidence: '故障後全暗', spot: ['50%', '48%'] },
+  powerstrip: { src: new URL('../img/applications/power-strip.webp', import.meta.url).href, evidence: '過載保護', spot: ['66%', '29%'] },
+  breaker: { src: new URL('../img/applications/breaker-panel.webp', import.meta.url).href, evidence: '跳脫位置', spot: ['50%', '50%'] },
+  safety: { src: new URL('../img/applications/wet-hand-safety.webp', import.meta.url).href, evidence: '保持乾燥', spot: ['16%', '42%'], secondSpot: ['67%', '48%'] }
+};
+
+const scenePhoto = (type, label) => {
+  const scene = scenePhotos[type];
+  const secondSpot = scene.secondSpot ? `<span class="evidence-spot secondary" style="--spot-x:${scene.secondSpot[0]};--spot-y:${scene.secondSpot[1]}"></span>` : '';
+  return `<figure class="app-visual photo-visual" role="img" aria-label="${label}"><img src="${scene.src}" alt="" width="960" height="540" loading="lazy" decoding="async"><span class="photo-evidence scene-evidence" data-label="${scene.evidence}" aria-hidden="true"><span class="evidence-spot" style="--spot-x:${scene.spot[0]};--spot-y:${scene.spot[1]}"></span>${secondSpot}</span></figure>`;
 };
 
 export function renderApplications(items) {
   const grid = document.querySelector('#applicationGrid');
-  grid.innerHTML = items.map((item, index) => `<article class="application-card" data-scene="${item.visual}">${sceneSvg(item.visual, item.alt)}<div class="content"><span class="principle-chip">${item.principle}</span><h2>${item.title}</h2><p>${item.description}</p><p class="think"><strong>先想一想：</strong>${item.question}</p><button class="application-toggle" type="button" aria-expanded="false" aria-controls="applicationAnswer${index}">顯示觀察證據</button><p id="applicationAnswer${index}" class="application-answer" hidden aria-live="polite"><strong>證據：</strong>${item.answer}</p></div></article>`).join('');
+  grid.innerHTML = items.map((item, index) => `<article class="application-card" data-scene="${item.visual}">${scenePhoto(item.visual, item.alt)}<div class="content"><span class="principle-chip">${item.principle}</span><h2>${item.title}</h2><p>${item.description}</p><p class="think"><strong>先想一想：</strong>${item.question}</p><button class="application-toggle" type="button" aria-expanded="false" aria-controls="applicationAnswer${index}">顯示觀察證據</button><p id="applicationAnswer${index}" class="application-answer" hidden aria-live="polite"><strong>證據：</strong>${item.answer}</p></div></article>`).join('');
   grid.querySelectorAll('.application-toggle').forEach(button => button.addEventListener('click', () => {
     const card = button.closest('.application-card');
     const answer = document.querySelector(`#${button.getAttribute('aria-controls')}`);

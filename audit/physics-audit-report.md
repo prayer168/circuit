@@ -1,6 +1,6 @@
 # 電路物理互動稽核報告
 
-- 稽核時間：2026-07-14T00:15:32.826Z
+- 稽核時間：2026-07-14T00:44:57.666Z
 - 結果：通過
 - 通過／失敗：22／0
 
@@ -19,7 +19,7 @@
 | 故障規則：series-normal | 通過 | {"id":"series-normal","mode":"series","fault":false,"prediction":"both-on","labelIncludes":"串聯且正常發亮","feedbackIncludes":"兩顆都亮","label":"兩顆燈泡串聯且正常發亮","feedback":"觀察結果：兩顆都亮。它們共用一條路。","ok":true} |
 | 故障規則：series-fault | 通過 | {"id":"series-fault","mode":"series","fault":true,"prediction":"both-off","labelIncludes":"兩顆燈泡都不亮","feedbackIncludes":"唯一通路被故障處切斷","label":"第 2 顆燈泡故障，串聯的兩顆燈泡都不亮","feedback":"預測成功！串聯的唯一通路被故障處切斷，兩顆都不亮。","ok":true} |
 | 故障規則：parallel-fault | 通過 | {"id":"parallel-fault","mode":"parallel","fault":true,"prediction":"one-on","labelIncludes":"第 1 顆仍亮","feedbackIncludes":"第 1 條支路仍完整","label":"第 2 顆燈泡故障，並聯的第 1 顆仍亮","feedback":"預測成功！並聯的第 1 條支路仍完整，所以第 1 顆繼續亮。","ok":true} |
-| 生活應用觀察證據 | 通過 | [{"answerVisible":true,"evidenceVisible":true},{"answerVisible":true,"evidenceVisible":true},{"answerVisible":true,"evidenceVisible":true},{"answerVisible":true,"evidenceVisible":true},{"answerVisible":true,"evidenceVisible":true},{"answerVisible":true,"evidenceVisible":true}] |
+| 生活應用寫實照片與觀察證據 | 通過 | [{"answerVisible":true,"evidenceVisible":true,"photoLoaded":true,"photoSource":"http://127.0.0.1:12933/img/applications/flashlight.webp"},{"answerVisible":true,"evidenceVisible":true,"photoLoaded":true,"photoSource":"http://127.0.0.1:12933/img/applications/home-lighting.webp"},{"answerVisible":true,"evidenceVisible":true,"photoLoaded":true,"photoSource":"http://127.0.0.1:12933/img/applications/string-lights.webp"},{"answerVisible":true,"evidenceVisible":true,"photoLoaded":true,"photoSource":"http://127.0.0.1:12933/img/applications/power-strip.webp"},{"answerVisible":true,"evidenceVisible":true,"photoLoaded":true,"photoSource":"http://127.0.0.1:12933/img/applications/breaker-panel.webp"},{"answerVisible":true,"evidenceVisible":true,"photoLoaded":true,"photoSource":"http://127.0.0.1:12933/img/applications/wet-hand-safety.webp"}] |
 | 題庫邊界與答案分布 | 通過 | 10 題；答案位置 0, 1, 2, 3 |
 | 響應式：desktop | 通過 | [{"tab":"mission","width":1440,"innerWidth":1440},{"tab":"light","width":1425,"innerWidth":1440},{"tab":"connections","width":1425,"innerWidth":1440},{"tab":"lab","width":1425,"innerWidth":1440},{"tab":"life","width":1425,"innerWidth":1440},{"tab":"quiz","width":1425,"innerWidth":1440},{"tab":"resources","width":1425,"innerWidth":1440}] |
 | 響應式：tablet | 通過 | [{"tab":"mission","width":753,"innerWidth":768},{"tab":"light","width":753,"innerWidth":768},{"tab":"connections","width":753,"innerWidth":768},{"tab":"lab","width":753,"innerWidth":768},{"tab":"life","width":753,"innerWidth":768},{"tab":"quiz","width":768,"innerWidth":768},{"tab":"resources","width":753,"innerWidth":768}] |

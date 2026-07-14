@@ -1,6 +1,6 @@
 # 內容來源與資源查核
 
-查核日期：2026-07-13。
+查核日期：2026-07-14。
 
 ## 教材內容與課綱
 
@@ -38,8 +38,27 @@
   https://hc2.taipower.com.tw/2289/2512/65434/2514/14867/normalPost
   用途：確認安全標章、額定容量及過負荷保護裝置等原則。
 
+## 生活應用寫實視覺
+
+- Energizer〈How Does a Flashlight Work〉
+  https://energizer.com/about-flashlights/how-does-a-flashlight-work/
+  用途：確認手電筒按鍵接通內部接點後形成通路，並比對反射罩、燈頭、筒身與側邊開關的真實外觀。
+- Unsplash〈Close-up of a single glowing Christmas light bulb〉
+  https://unsplash.com/photos/close-up-of-a-single-glowing-christmas-light-bulb-RTaNTXH-jb8
+  用途：比對傳統白熾燈串的玻璃燈泡、燈絲、燈座與絕緣線材外觀；原照片未下載、描摹或嵌入教材。
+- 經濟部標準檢驗局〈正確使用延長線保平安〉
+  https://www.bsmi.gov.tw/bsmiGIP/wSite/ct?ctNode=9885&mp=58&xItem=100318
+  用途：確認台灣延長線應依插座型式選購、注意額定容量並優先使用具過載保護裝置的產品。
+- Electrical Safety Foundation International〈Understanding Your Home Electrical System〉
+  https://www.esfi.org/understanding-your-home-electrical-system/
+  用途：確認住宅斷路器跳脫的外觀與處理原則：先排除過載或故障原因，再進行復歸。
+- OSHA 29 CFR 1910.334〈Use of Equipment〉
+  https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.334
+  用途：確認濕手不可插拔通電中的插頭與設備，並據此把照片設計為手與插座保持安全距離、沒有接觸或電弧。
+- 六張成品使用 OpenAI 內建 imagegen 依上述查核結果重新生成，再轉為 960×540 WebP；不含商標、浮水印或來源照片內容，外部照片只作外觀研究與比對。
+
 ## 連結與授權紀錄
 
 - `data/resources.json` 的 8 個自主學習連結於 2026-07-13 以實際 HTTP 請求重新檢查，皆回應 200。
-- 本教材文字、程式、SVG 與社群預覽圖為本專案原創，程式碼採 MIT License。
+- 本教材文字、程式、SVG、AI 生成生活情境圖與社群預覽圖為本專案原創製作，程式碼採 MIT License。
 - 外部網站只作事實查核與延伸連結；未複製、描摹或嵌入授權不明圖片、影片或學習單。

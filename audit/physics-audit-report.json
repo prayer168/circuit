@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-14T00:15:32.826Z",
+  "generatedAt": "2026-07-14T00:44:57.666Z",
   "project": "C:\\Users\\user\\Documents\\網站調整\\circuit",
   "browser": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "summary": {
@@ -73,9 +73,9 @@
       "detail": "{\"id\":\"parallel-fault\",\"mode\":\"parallel\",\"fault\":true,\"prediction\":\"one-on\",\"labelIncludes\":\"第 1 顆仍亮\",\"feedbackIncludes\":\"第 1 條支路仍完整\",\"label\":\"第 2 顆燈泡故障，並聯的第 1 顆仍亮\",\"feedback\":\"預測成功！並聯的第 1 條支路仍完整，所以第 1 顆繼續亮。\",\"ok\":true}"
     },
     {
-      "id": "生活應用觀察證據",
+      "id": "生活應用寫實照片與觀察證據",
       "ok": true,
-      "detail": "[{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true},{\"answerVisible\":true,\"evidenceVisible\":true}]"
+      "detail": "[{\"answerVisible\":true,\"evidenceVisible\":true,\"photoLoaded\":true,\"photoSource\":\"http://127.0.0.1:12933/img/applications/flashlight.webp\"},{\"answerVisible\":true,\"evidenceVisible\":true,\"photoLoaded\":true,\"photoSource\":\"http://127.0.0.1:12933/img/applications/home-lighting.webp\"},{\"answerVisible\":true,\"evidenceVisible\":true,\"photoLoaded\":true,\"photoSource\":\"http://127.0.0.1:12933/img/applications/string-lights.webp\"},{\"answerVisible\":true,\"evidenceVisible\":true,\"photoLoaded\":true,\"photoSource\":\"http://127.0.0.1:12933/img/applications/power-strip.webp\"},{\"answerVisible\":true,\"evidenceVisible\":true,\"photoLoaded\":true,\"photoSource\":\"http://127.0.0.1:12933/img/applications/breaker-panel.webp\"},{\"answerVisible\":true,\"evidenceVisible\":true,\"photoLoaded\":true,\"photoSource\":\"http://127.0.0.1:12933/img/applications/wet-hand-safety.webp\"}]"
     },
     {
       "id": "題庫邊界與答案分布",
